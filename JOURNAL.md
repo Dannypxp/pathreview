@@ -8,7 +8,7 @@
 
 **Selection Notes:**
 
-Currently my degree and focus is cybersecurity and computer science. This issue does seem difficult in relation to the size of the overall project but relatable to projects I have done during my senior year and in topic. These projects include making a vulnerability prediction tool using linear regression and other models to predict the impact the vulnerabillities on a csv of windows exploits. This issue is actually defending against a vulnerability like prompt injection which requires generating tests and searching examples used by malicious actors. Research and understanding the layout of this project are strong skills used by cybersecurity individuals every day.
+Currently my degree and focus is cybersecurity and computer science. This issue does seem difficult in relation to the size of the overall project but relatable to projects I have done during my senior year and in topic. These projects include making a vulnerability prediction tool using linear regression and other models to predict the impact the vulnerabilities on a csv of windows exploits. This issue is actually defending against a vulnerability like prompt injection which requires generating tests and searching examples used by malicious actors. Research and understanding the layout of this project are strong skills used by cybersecurity individuals every day.
 
 
 **Problem summary:**
@@ -22,3 +22,22 @@ The issue consists of creating security test automations that run every time a p
 **Setup confirmation:** [*] App runs locally at localhost:5173
 
 **Cohort ledger:** [*] Issue added to cohort ledger
+
+
+
+
+## Week 8 — Reproduction & solution planning
+
+**Reproduction commit link:** https://github.com/ascherj/pathreview/commit/1d83a53eeb9263a07db006c947146898354e3a6a
+
+**Reproduction summary:**
+[1–2 sentences: How did you reproduce the issue? What did you observe?]
+
+To reproduce the issue, I had to go into "tests/security" to see the red-team suite was not created and no test file was found, this means I would have to create the suite from scratch.
+
+**PLAN.md link:** https://github.com/Dannypxp/pathreview/blob/feat/71-red-teaming-suite/PLAN.md
+
+**Walkthrough video (recommended):** (https://www.loom.com/share/df5fa1c88f0a4eb08ecea3ca12424c9a)
+
+**Blockers or open questions:**
+[Anything you're still uncertain about going into Week 9, or leave blank]
