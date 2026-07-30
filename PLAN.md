@@ -19,7 +19,7 @@ What are the steps to fix this issue?
 Break it into 3–5 concrete sub-tasks.
 
 Sub tasks:
-- Research missing prompt_injection techniques from promp_defense.py
+- Research missing prompt_injection techniques from prompt_defense.py
 - Create new file called test_prompt_injection.py
 - Create the new prompt_injection tests
 - Function to run tests in CI during each pr that touches safety/
@@ -35,7 +35,7 @@ The fix takes in the files with updates/changes in a pull request to validate it
 ### Risks & unknowns
 What could go wrong? What are you still unsure about?
 
-Some areas where mistakes may arise is not including every form of prompt injection in the injection_attempst.py file which would lead the app to be vulnerable, another is the tests not running in the CI in ci.yml during the pr's. Another risk is that prompt_defense.py isn't currently called anywhere in the app so running the file wont prove our current security.
+Some areas where mistakes may arise is not including every form of prompt injection in "tests/fixtures/injection_attempts/" which would lead the app to be vulnerable, another is the tests not running in the CI in ci.yml during the pr's. Another risk is that prompt_defense.py isn't currently called anywhere in the app so running the file wont prove our current security.
 
 ### Edge cases
 What inputs or states should your fix handle gracefully?
