@@ -41,3 +41,36 @@ To reproduce the issue, I had to go into "tests/security" to see the red-team su
 
 **Blockers or open questions:**
 [Anything you're still uncertain about going into Week 9, or leave blank]
+
+
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+[What have you implemented so far? Which sub-tasks from PLAN.md are done?]
+So far I have completed three sub tasks which were to research the missing prompt injection tests from prompt_defense.py, created the new prompt_injection payloads and the test_promp_injection.py to run the payloads.
+
+**Next steps:**
+[What are you working on for the rest of the week?]
+Next steps are to wire the red team suite to the ci to run the tests everytime a pr touches "safety/". Futhermore, I still have to create conditions for the two edge cases which are for submitting a pr that didnt touch "safety/" and for when a pr changes/alters the prompt_injection tests. Lasty I have to make my pr to submit the assignment.
+**Blockers:**
+[Anything slowing you down? Or leave blank.]
+Claude was down aroun d
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** [link to your submitted pull request]
+
+**Branch:** [the branch name you worked on, e.g. `fix/123-short-description`]
+
+**What you built:**
+[1–3 sentences summarizing what your fix does and how it works]
+
+**Tests added or updated:**
+[Which test files did you touch? What do they cover?]
+
+**Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
+
+**Draft PR feedback received from:** [name or Slack handle, or "none"]
