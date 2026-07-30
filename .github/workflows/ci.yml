@@ -45,6 +45,35 @@ jobs:
         env:
           LLM_PROVIDER: mock
 
+  test-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check whether safety-relevant files changed
+        id: changes
+        run: |
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "run_tests=true" >> "$GITHUB_OUTPUT"
+          elif git diff --name-only "origin/${{ github.base_ref }}...HEAD" | grep -qE '^(safety/|tests/security/|tests/fixtures/injection_attempts/)'; then
+            echo "run_tests=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_tests=false" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-python@v5
+        if: steps.changes.outputs.run_tests == 'true'
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -e ".[dev]"
+        if: steps.changes.outputs.run_tests == 'true'
+      - name: Run red-team prompt injection tests
+        if: steps.changes.outputs.run_tests == 'true'
+        run: pytest tests/security -v --tb=short
+        env:
+          LLM_PROVIDER: mock
+
   test-integration:
     runs-on: ubuntu-latest
     services:
