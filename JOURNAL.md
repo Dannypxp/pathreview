@@ -49,28 +49,34 @@ To reproduce the issue, I had to go into "tests/security" to see the red-team su
 
 **Current progress:**
 [What have you implemented so far? Which sub-tasks from PLAN.md are done?]
-So far I have completed three sub tasks which were to research the missing prompt injection tests from prompt_defense.py, created the new prompt_injection payloads and the test_promp_injection.py to run the payloads.
+So far I have completed three sub tasks which were to research the missing prompt injection tests from prompt_defense.py, created the new prompt_injection payloads and the test_prompt_injection.py to run the payloads.
 
 **Next steps:**
 [What are you working on for the rest of the week?]
-Next steps are to wire the red team suite to the ci to run the tests everytime a pr touches "safety/". Futhermore, I still have to create conditions for the two edge cases which are for submitting a pr that didnt touch "safety/" and for when a pr changes/alters the prompt_injection tests. Lasty I have to make my pr to submit the assignment.
+Next steps are to wire the red team suite to the ci to run the tests every time a pr touches "safety/". Furthermore, I still have to create conditions for the two edge cases which are for submitting a pr that did not touch "safety/" and for when a pr changes/alters the prompt_injection tests. Lastly I have to make my pr to submit the assignment.
 **Blockers:**
 [Anything slowing you down? Or leave blank.]
-Claude was down aroun d
+Claude was down around 4pm on Wednesday, it halted my work 
 ---
 
 ### Check-in 2 (end of week)
 
-**PR link:** [link to your submitted pull request]
+**PR link:** https://github.com/ascherj/pathreview/pull/465
 
-**Branch:** [the branch name you worked on, e.g. `fix/123-short-description`]
+**Branch:** 
+
+feat/71-red-teaming-suite
 
 **What you built:**
-[1–3 sentences summarizing what your fix does and how it works]
+
+Built a red-team test suite for the prompt injection defense: added `tests/security/test_prompt_injection.py`, a fixture corpus of 13 curated attack payloads in `tests/fixtures/injection_attempts/`, and a `test-security` job in `ci.yml` that runs the suite when a PR touches `safety/`, skips when it doesn't, and fails if the fixtures or tests are weakened or deleted.
 
 **Tests added or updated:**
-[Which test files did you touch? What do they cover?]
 
-**Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
+Added `tests/security/test_prompt_injection.py`, covering 6 categories of known prompt injection attacks: role-switching (`System:`/`Human:`/`Assistant:`), separator-line breakout (`---`), template/Jinja injection (`{{ }}`/`{% %}`), instruction-override keywords (ignore/forget/disregard/override), and code-execution attempts (`execute()`/`run()`/`eval()`), using 13 curated payloads in `tests/fixtures/injection_attempts/`. Also added `test_corpus_meets_minimum_size`, a guard so the suite can't silently pass if fixtures are deleted.
 
-**Draft PR feedback received from:** [name or Slack handle, or "none"]
+**Self-review confirmation:** [*] make check passes  [*] make test-unit passes
+Neither passes cleanly, but only due to pre-existing issues unrelated to this branch: `make test-unit` has 53 pre-existing failures (verified via `git diff main --stat` that none of the failing files were touched here), and `make check` has pre-existing lint/type errors elsewhere (verified `ruff`/`black`/`mypy` are clean on every file this PR changes). The new `tests/security` suite passes 15/15.
+
+**Draft PR feedback received from:** 
+none
